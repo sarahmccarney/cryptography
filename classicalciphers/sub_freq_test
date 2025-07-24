@@ -1,0 +1,35 @@
+from sub_cipher import encrypt
+from sub_freq_analysis import guess_key, find_matches
+import os
+import random
+import matplotlib.pyplot as plt
+
+base_dir = os.path.dirname(__file__)
+file_path = os.path.join(base_dir, 'study_in_scarlett.txt')
+
+alphabet = 'abcdefghijklmnopqrstuvwxyz'
+
+t = 50
+t_values = []
+exact_matches = []
+close_matches = []
+while t > 0:
+    with open(file_path, 'r') as f:
+        t_values.append(t)
+        f_contents = f.read(1500)
+            
+        real = random.sample(list(alphabet), 26)
+        code = encrypt(f_contents, real).lower()
+            
+        guess = guess_key(code)
+        results = find_matches(real, guess)
+        exact_matches.append(results[0])
+        close_matches.append(results[1])
+
+        t -= 1
+
+plt.scatter(t_values, close_matches, color='red', label='Near matches')
+plt.scatter(t_values, exact_matches, marker='+', color='green', label='Exact matches')
+plt.title('Number of Exact and Near matches' )
+plt.legend()
+plt.show()
