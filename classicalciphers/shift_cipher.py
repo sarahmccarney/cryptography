@@ -1,5 +1,16 @@
 
 def encrypt(plaintext, shift):
+    '''
+    Encrypt using a shift cipher.
+
+    Args:
+    plaintext(str): Message to encrypt.
+    shift(int): Value to shift message by.
+
+    Returns: 
+    str: Encrypted message. 
+    
+    '''
     alphabet = 'abcdefghijklmnopqrstuvwxyz'
     ciphertext = ''
     plaintext = plaintext.lower()
@@ -21,6 +32,16 @@ def encrypt(plaintext, shift):
 
 
 def decrypt(ciphertext, shift):
+    '''
+    Decrypt code encrypted using a shift cipher.
+
+    Args:
+    ciphertext(str): Code to decrypt.
+    shift(int): Shift value used in encryption.
+
+    Returns: 
+    str: Decrypted message. 
+    '''
     alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
     plaintext = ''
     ciphertext = ciphertext.upper()
@@ -41,12 +62,22 @@ def decrypt(ciphertext, shift):
 
 
 def brute_force(ciphertext):
+    '''
+    Return all possible options for message encrypted by shift cipher.
+
+    Args:
+    ciphertext(str): Encypted message.
+
+    Returns:
+    list: 26 possible messages.
+    '''
     alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
     possibilities = []
     for k in range(26):
         possibilities.append(decrypt(ciphertext, k))
     return(possibilities)
 
+#testing
 if __name__ ==  '__main__':
     print(encrypt('My name is Sarah and I am testing out three functions that I have just written in relation to shift ciphers.', 13))
    

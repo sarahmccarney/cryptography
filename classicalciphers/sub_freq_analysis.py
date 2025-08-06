@@ -73,7 +73,7 @@ def find_matches(key, guess):
     guess(list): Guess of key used.
 
     Returns:
-    
+    tuple: (Exact matches, Close matches)
 
     '''
     exact_matches = 0

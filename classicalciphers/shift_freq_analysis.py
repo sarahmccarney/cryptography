@@ -14,9 +14,16 @@ computer passwords, and military communications.'''
 
 code = encrypt(message, 7).lower()
 
-alphabet ='abcdefghijklmnopqrstuvwxyz'
-
 def counter(ciphertext):
+    '''
+    Determine frequency of each letter in an extract.
+
+    Args:
+    ciphertext(str) : Extract for which letter frequency is to be found.
+    
+    Return:
+    list: List of frequencies of each letter.
+    '''
     alphabet = 'abcdefghijklmnopqrstuvwxyz'
     count = []
     
@@ -30,10 +37,11 @@ def counter(ciphertext):
 
     return modified_count
 
-#comparsion graphs
+#plotting comparsion graphs
 letter_freq = [0.082, 0.015, 0.028, 0.043, 0.127, 0.022, 0.020, 0.061, 0.070, 0.002, 0.008, 0.040, 0.024, 0.067, 0.075, 0.019,
-               0.001, 0.060, 0.063, 0.091, 0.028, 0.010, 0.024, 0.002, 0.020, 0.007]
+               0.001, 0.060, 0.063, 0.091, 0.028, 0.010, 0.024, 0.002, 0.020, 0.007] #from wikipedia
 
+alphabet ='abcdefghijklmnopqrstuvwxyz'
 alphabet_list = list(alphabet)
 
 modified_count = counter(code)
@@ -55,8 +63,16 @@ if __name__ == '__main__':
 
     plt.show()
 
-#basic decryption function - finds most common letter in ciphertext and maps it to e to find shift
 def basic_decrypt(ciphertext):
+    '''
+    Find most common letter in ciphertext and map it to e to guess shift.
+
+    Args:
+    ciphertext(str): Text to be decrypted.
+
+    Returns:
+    int: Shift.
+    '''
     modified_count = counter(ciphertext)
 
     n0 = max(modified_count)
@@ -72,6 +88,15 @@ def basic_decrypt(ciphertext):
 
 #advanced decryption function - returns shift with lowest chi squared value
 def advanced_decrypt(ciphertext):
+    '''
+    Return shift with lowest chi squared value.
+
+    Args:
+    ciphertext(str): Text to be decrypted.
+
+    Returns:
+    int: Shift.
+    '''
     modified_count = counter(ciphertext)
 
     letter_freq = [0.082, 0.015, 0.028, 0.043, 0.127, 0.022, 0.020, 0.061, 0.070, 0.002, 0.008, 0.040, 0.024, 0.067, 0.075, 0.019, 
@@ -88,7 +113,6 @@ def advanced_decrypt(ciphertext):
     
     return chi_squared_list.index(min(chi_squared_list))
      
-
 
 if __name__ == '__main__':
     print(basic_decrypt(code))

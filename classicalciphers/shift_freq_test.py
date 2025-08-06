@@ -9,15 +9,15 @@ file_path = os.path.join(base_dir, 'study_in_scarlett.txt')
 
 def shift_freq_test(decrypt_func, num):
     '''
-    Test a decryption function using a specific text file.
+    Test a decryption function using a given text file, prints number of successes
+    and failures from 100 trials, for each time the test is run
 
     Args:
-    decrypt_func(func): Decryption function which takes a ciphertext and returns a guess for the shift.
-    num(int): Number of times which test is to be run.
+    decrypt_func(func): decryption function which takes a ciphertext and returns a guess for the shift.
+    num(int): number of times for which test is to be run.
 
     Returns:
-    
-
+    None
     '''
     for n in range(1, num+1):
         Success = 0

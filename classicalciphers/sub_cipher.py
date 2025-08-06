@@ -1,6 +1,16 @@
 import random
 
 def encrypt(plaintext, key):
+    '''
+    Encrypt using a simple substitution cipher.
+
+    Args:
+    plaintext(str): Message to encrypt.
+    key(list): List containing each the substitution for each letter in the place of the letter.
+
+    Returns: 
+    str: Encrypted message.
+    '''
     alphabet_str = 'abcdefghijklmnopqrstuvwxyz'
     plaintext = plaintext.lower()
     ciphertext = ''
@@ -15,6 +25,16 @@ def encrypt(plaintext, key):
     return(ciphertext)
 
 def decrypt(ciphertext, key):
+    '''
+    Decrypt code encrypted using a simple substitution cipher.
+
+    Args:
+    ciphertext(str): Code to decrypt.
+    key(list): Key used in encryption.
+
+    Returns: 
+    str: Decrypted message. 
+    '''
     alphabet_str = 'abcdefghijklmnopqrstuvwxyz'
     alphabet_list = list(alphabet_str)
     key_str = "".join(str(x) for x in key)

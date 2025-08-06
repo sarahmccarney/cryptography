@@ -9,7 +9,7 @@ file_path = os.path.join(base_dir, 'study_in_scarlett.txt')
 
 alphabet = 'abcdefghijklmnopqrstuvwxyz'
 
-t = 50
+t = 50 # number of times test is being run
 t_values = []
 exact_matches = []
 close_matches = []
@@ -18,7 +18,7 @@ while t > 0:
         t_values.append(t)
         f_contents = f.read(1500)
             
-        real = random.sample(list(alphabet), 26)
+        real = random.sample(list(alphabet), 26) # generating random key
         code = encrypt(f_contents, real).lower()
             
         guess = guess_key(code)
@@ -28,8 +28,11 @@ while t > 0:
 
         t -= 1
 
+# plotting results
 plt.scatter(t_values, close_matches, color='red', label='Near matches')
 plt.scatter(t_values, exact_matches, marker='+', color='green', label='Exact matches')
 plt.title('Number of Exact and Near matches' )
 plt.legend()
 plt.show()
+
+# Very inaccurate, may implement machine learning techniques in the future
